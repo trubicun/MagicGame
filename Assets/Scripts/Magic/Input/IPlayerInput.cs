@@ -1,5 +1,7 @@
+using System;
 using UniRx;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace Magic.Input
 {
@@ -8,5 +10,7 @@ namespace Magic.Input
         ReactiveProperty<Vector2> MoveInput { get; }
         
         ReactiveProperty<Vector2> LookInput { get; }
+        
+        IObservable<InputAction> OnFire { get; }
     }   
 }
