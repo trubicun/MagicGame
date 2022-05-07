@@ -25,7 +25,7 @@ namespace Magic.Input
 
         public void Look(InputAction.CallbackContext context)
         {
-            playerInput.Move.Value = context.ReadValue<Vector2>();
+            playerInput.Look.Value = context.ReadValue<Vector2>();
         }
 
         public void Fire(InputAction.CallbackContext context)
