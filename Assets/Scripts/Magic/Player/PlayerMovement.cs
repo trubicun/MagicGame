@@ -27,17 +27,17 @@ namespace Magic.Player
         
         void Awake()
         {
-            rigidbody.freezeRotation = true;
-            
-            playerInput.MoveInput
-                .ObserveEveryValueChanged(v => v.Value)
-                .Subscribe(OnMove)
-                .AddTo(this);
-
-            playerInput.LookInput
-                .ObserveEveryValueChanged(v => v.Value)
-                .Subscribe(_ => OnMove(playerInput.MoveInput.Value))
-                .AddTo(this);
+            // rigidbody.freezeRotation = true;
+            //
+            // playerInput.Move
+            //     .ObserveEveryValueChanged(v => v.Value)
+            //     .Subscribe(OnMove)
+            //     .AddTo(this);
+            //
+            // playerInput.Look
+            //     .ObserveEveryValueChanged(v => v.Value)
+            //     .Subscribe(_ => OnMove(playerInput.Move.Value))
+            //     .AddTo(this);
         }
         
         void FixedUpdate()

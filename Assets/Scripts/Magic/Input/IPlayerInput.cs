@@ -5,12 +5,15 @@ using UnityEngine.InputSystem;
 
 namespace Magic.Input
 {
+    /// <summary>
+    /// Observables for Player Inout
+    /// </summary>
     public interface IPlayerInput
     {
-        ReactiveProperty<Vector2> MoveInput { get; }
+        ReactiveProperty<Vector2> Move { get; }
         
-        ReactiveProperty<Vector2> LookInput { get; }
+        ReactiveProperty<Vector2> Look { get; }
         
-        IObservable<InputAction> OnFire { get; }
+        ReactiveProperty<InputAction> Action1 { get; }
     }   
 }

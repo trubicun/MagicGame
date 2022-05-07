@@ -1,37 +1,23 @@
-using System;
-using UniRx;
+﻿using UniRx;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Magic.Input 
+namespace Magic.Input
 {
-    public class PlayerInput : MonoBehaviour, IPlayerInput
+    /// <summary>
+    /// Observables for Player Inout
+    /// </summary>
+    public class PlayerInput : IPlayerInput
     {
-        public ReactiveProperty<Vector2> MoveInput { get; } = new ReactiveProperty<Vector2>();
-        public ReactiveProperty<Vector2> LookInput { get; } = new ReactiveProperty<Vector2>();
-        public IObservable<InputAction> OnFire { get; private set; }
+        public ReactiveProperty<Vector2> Move { get; }
+        public ReactiveProperty<Vector2> Look { get; }
+        public ReactiveProperty<InputAction> Action1 { get; }
 
-        Subject<InputAction> onFire = new Subject<InputAction>();
-
-
-        void Awake()
+        public PlayerInput()
         {
-            OnFire = onFire.AsObservable();
-        }
-
-        public void Move(InputAction.CallbackContext context)
-        {
-            MoveInput.Value = context.ReadValue<Vector2>();
-        }
-
-        public void Look(InputAction.CallbackContext context)
-        {
-            LookInput.Value = context.ReadValue<Vector2>();
-        }
-
-        public void Fire(InputAction.CallbackContext context)
-        {
-            onFire.OnNext(context.action);
+            Move = new ReactiveProperty<Vector2>();
+            Look = new ReactiveProperty<Vector2>();
+            Action1 = new ReactiveProperty<InputAction>();
         }
     }
 }

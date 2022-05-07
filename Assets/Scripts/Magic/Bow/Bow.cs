@@ -18,9 +18,9 @@ public class Bow : MonoBehaviour
 
     void Start()
     {
-        playerInput.OnFire
-            .Subscribe(OnFire)
-            .AddTo(this);
+        // playerInput.Action1
+        //     .Subscribe(OnFire)
+        //     .AddTo(this);
     }
 
     Arrow arrow;

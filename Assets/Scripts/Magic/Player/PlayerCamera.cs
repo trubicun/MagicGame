@@ -30,7 +30,7 @@ namespace Magic.Player
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
-            playerInput.LookInput
+            playerInput.Look
                 .ObserveEveryValueChanged(v => v.Value)
                 .Subscribe(OnLook)
                 .AddTo(this);
