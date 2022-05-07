@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 namespace Magic.Input
 {
     /// <summary>
-    /// Observables for Player Inout
+    /// Observables for Player Input
     /// </summary>
     public interface IPlayerInput
     {

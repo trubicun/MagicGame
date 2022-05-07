@@ -24,9 +24,9 @@ namespace Magic.Bow
 
         void Start()
         {
-            playerInput.Action1
-                .Subscribe(OnFire)
-                .AddTo(this);
+            // playerInput.Action1
+            //     .Subscribe(OnFire)
+            //     .AddTo(this);
         }
         
         void OnFire(InputAction action)

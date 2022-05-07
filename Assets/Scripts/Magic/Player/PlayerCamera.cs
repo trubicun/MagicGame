@@ -31,7 +31,6 @@ namespace Magic.Player
             Cursor.visible = false;
 
             playerInput.Look
-                .ObserveEveryValueChanged(v => v.Value)
                 .Subscribe(OnLook)
                 .AddTo(this);
         }

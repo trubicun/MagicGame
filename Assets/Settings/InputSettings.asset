@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: InputSettings
   m_EditorClassIdentifier: 
   <MaxYAngle>k__BackingField: 90
-  <SensetivityX>k__BackingField: 50
+  <SensetivityX>k__BackingField: 15
   <InverseX>k__BackingField: 0
-  <SensetivityY>k__BackingField: 50
+  <SensetivityY>k__BackingField: 15
   <InverseY>k__BackingField: 0
   <MoveSpeed>k__BackingField: 60
   <Drag>k__BackingField: 10

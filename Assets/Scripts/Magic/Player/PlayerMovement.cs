@@ -1,72 +1,41 @@
-using System;
-using Magic.Input;
+﻿using Magic.Input;
 using Magic.Settings;
 using UniRx;
 using UnityEngine;
-using UnityEngine.EventSystems;
 using Zenject;
 
 namespace Magic.Player
 {
-    public class PlayerMovement : MonoBehaviour
+    /// <summary>
+    /// Calculate player movement
+    /// </summary>
+    public class PlayerMovement : IPlayerMovement, IFixedTickable
     {
-        [SerializeField] Rigidbody rigidbody;
-        [SerializeField] Transform orientation;
+        public ReactiveProperty<Vector3> MoveDirection { get; }
         
-        IPlayerInput playerInput;
         InputSettings inputSettings;
+        IPlayerInput playerInput;
+        Transform playerOrientation;
 
-        Vector3 moveDirection = Vector3.zero;
-
-        [Inject]
-        public void Init(IPlayerInput playerInput, InputSettings inputSettings)
+        public PlayerMovement(IPlayerInput playerInput, InputSettings inputSettings, Transform playerOrientation)
         {
-            this.playerInput = playerInput;
             this.inputSettings = inputSettings;
-        }
-        
-        void Awake()
-        {
-            // rigidbody.freezeRotation = true;
-            //
-            // playerInput.Move
-            //     .ObserveEveryValueChanged(v => v.Value)
-            //     .Subscribe(OnMove)
-            //     .AddTo(this);
-            //
-            // playerInput.Look
-            //     .ObserveEveryValueChanged(v => v.Value)
-            //     .Subscribe(_ => OnMove(playerInput.Move.Value))
-            //     .AddTo(this);
-        }
-        
-        void FixedUpdate()
-        {
-            Move(moveDirection);
+            this.playerOrientation = playerOrientation;
+            this.playerInput = playerInput;
+            MoveDirection = new ReactiveProperty<Vector3>();
         }
 
-        void OnMove(Vector2 move)
+        Vector3 CalculateMovement(Transform orientation, Vector2 direction, float speed)
         {
-            moveDirection = orientation.forward * move.y + orientation.right * move.x;
-        }
-
-        void Move(Vector3 moveDirection)
-        {
-            rigidbody.AddForce(moveDirection.normalized * inputSettings.MoveSpeed, ForceMode.Force);
-            rigidbody.drag = inputSettings.Drag;
+            var moveVector = orientation.forward * direction.y + orientation.right * direction.x;
+            moveVector = moveVector.normalized * speed;
             
-            SpeedControl();
+            return moveVector;
         }
-
-        void SpeedControl()
+        
+        public void FixedTick()
         {
-            Vector3 velocity = new Vector3(rigidbody.velocity.x, 0f, rigidbody.velocity.z);
-
-            if (velocity.magnitude > inputSettings.MoveSpeed)
-            {
-                var limitedVelocity = velocity.normalized * inputSettings.MoveSpeed;
-                rigidbody.velocity = new Vector3(limitedVelocity.x, rigidbody.velocity.y, limitedVelocity.z);
-            }
+            MoveDirection.Value = CalculateMovement(playerOrientation,playerInput.Move.Value, inputSettings.MoveSpeed);
         }
     }
 }

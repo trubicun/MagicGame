@@ -229,7 +229,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 93469389}
-  - component: {fileID: 93469390}
   - component: {fileID: 93469391}
   m_Layer: 0
   m_Name: Player
@@ -256,20 +255,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &93469390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 93469385}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b5f2c763966d234ea3b6ca31fcba25a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rigidbody: {fileID: 93469391}
-  orientation: {fileID: 299450809}
 --- !u!54 &93469391
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -284,7 +269,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 1
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 1
 --- !u!95 &139766685 stripped
 Animator:
@@ -434,6 +419,7 @@ GameObject:
   - component: {fileID: 557239535}
   - component: {fileID: 557239534}
   - component: {fileID: 557239536}
+  - component: {fileID: 557239537}
   m_Layer: 0
   m_Name: MainContext
   m_TagString: Untagged
@@ -456,6 +442,7 @@ MonoBehaviour:
   _scriptableObjectInstallers: []
   _monoInstallers:
   - {fileID: 557239536}
+  - {fileID: 557239537}
   _installerPrefabs: []
   _autoRun: 1
   OnPreInstall:
@@ -500,8 +487,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8bc13147e389fa54c84a6959d899a5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerInput: {fileID: 1402309492}
   inputSettings: {fileID: 11400000, guid: d6b5cf275cbabac4794e0f5c3f2a55ba, type: 2}
+--- !u!114 &557239537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 557239533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4b0b688c7a448b68a5c049bcb186aec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerOrientation: {fileID: 299450809}
+  playerRigidBody: {fileID: 93469391}
 --- !u!1 &674477339
 GameObject:
   m_ObjectHideFlags: 0
