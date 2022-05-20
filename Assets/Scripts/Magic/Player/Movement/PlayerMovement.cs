@@ -4,10 +4,10 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Magic.Player
+namespace Magic.Player.Movement
 {
     /// <summary>
-    /// Calculate player movement
+    /// Calculates player movement
     /// </summary>
     public class PlayerMovement : IPlayerMovement, IFixedTickable
     {

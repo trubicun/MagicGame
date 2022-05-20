@@ -2,7 +2,7 @@ using Magic.Settings;
 using UnityEngine;
 using Zenject;
 
-namespace Magic.Player
+namespace Magic.Player.Movement
 {
     /// <summary>
     /// Applies movement to player

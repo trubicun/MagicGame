@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Magic.Player.Movement;
+using UnityEngine;
 using Zenject;
 
 namespace Magic.Player
@@ -14,6 +15,8 @@ namespace Magic.Player
             Container.BindInterfacesTo<PlayerMovement>().AsSingle();
             Container.BindInterfacesTo<PlayerMovementHandler>().AsSingle();
             Container.Bind<Rigidbody>().FromInstance(playerRigidBody).AsSingle();
+            
+            Container.BindIFactory<Object, IPlayer>().FromFactory<PrefabFactory<Player>>();
         }
     }
 }

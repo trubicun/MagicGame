@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Magic.Player
+namespace Magic.Player.Camera
 {
     public class CameraHolder : MonoBehaviour
     {

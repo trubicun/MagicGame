@@ -4,11 +4,11 @@ using UniRx;
 using UnityEngine;
 using Zenject;
 
-namespace Magic.Player
+namespace Magic.Player.Camera
 {
     public class PlayerCamera : MonoBehaviour
     {
-        [SerializeField] Camera playerCamera;
+        [SerializeField] UnityEngine.Camera playerCamera;
         [SerializeField] Transform orientation;
         
         InputSettings inputSettings;

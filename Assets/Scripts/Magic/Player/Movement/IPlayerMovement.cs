@@ -1,7 +1,7 @@
 ﻿using UniRx;
 using UnityEngine;
 
-namespace Magic.Player
+namespace Magic.Player.Movement
 {
     public interface IPlayerMovement
     {
