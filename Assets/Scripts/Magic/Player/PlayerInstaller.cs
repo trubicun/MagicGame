@@ -11,12 +11,10 @@ namespace Magic.Player
 
         public override void InstallBindings()
         {
-            Container.Bind<Transform>().FromInstance(playerOrientation).WhenInjectedInto<PlayerMovement>();
+            Container.Bind<Transform>().FromInstance(playerOrientation).AsSingle();
+            Container.Bind<Rigidbody>().FromInstance(playerRigidBody).AsSingle();
             Container.BindInterfacesTo<PlayerMovement>().AsSingle();
             Container.BindInterfacesTo<PlayerMovementHandler>().AsSingle();
-            Container.Bind<Rigidbody>().FromInstance(playerRigidBody).AsSingle();
-            
-            Container.BindIFactory<Object, IPlayer>().FromFactory<PrefabFactory<Player>>();
         }
     }
 }

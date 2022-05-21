@@ -6,16 +6,17 @@ namespace Magic.Model
 {
     public class GameManager : MonoBehaviour, IGameManager
     {
-        [SerializeField] Transform playerSpawn;
-        [SerializeField] Object playerPrefab;
+        PlayerSpawn playerSpawn;
         
-        [Inject] IFactory<Object, IPlayer> playerFactory;
+        [Inject]
+        void Init(PlayerSpawn playerSpawn)
+        {
+            this.playerSpawn = playerSpawn;
+        }
 
         void Start()
         {
-            var player = playerFactory.Create(playerPrefab);
-            
-            Debug.Log("Player Created! " + player);
+            playerSpawn.SpawnPlayer();
         }
     }
 }
